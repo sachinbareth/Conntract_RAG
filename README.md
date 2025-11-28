@@ -19,7 +19,19 @@ This system supports:
 ✅ **Admin Metrics + Health Check**
 
 ---
+## 🧱 Architecture Overview
 
+```mermaid
+flowchart TD
+    A[PDF Upload] --> B[Ingest Service<br>PyPDF2 + Chunking + Metadata]
+    B --> C[(PostgreSQL<br>Full Text)]
+    B --> D[(FAISS Vector DB<br>Embeddings)]
+    C --> E[RAG Engine + Groq Llama 70B]
+    D --> E
+    E --> F[/ask → Q&A with Citations/]
+    E --> G[/extract → Structured Fields/]
+    E --> H[/audit → Risk Analysis/]
+```
 
 ---
 
@@ -105,4 +117,5 @@ app/
 │── main.py
 │── config.py
 ```
+
 
