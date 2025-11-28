@@ -130,7 +130,8 @@ This project delivers a complete production-ready Contract Intelligence system w
 
 It is modular, scalable, and optimized for real-world enterprise contract workflows.
 
-If this project was helpful or you found it interesting, consider giving it a ⭐ on GitHub!
+
+
 
 
 
