@@ -82,4 +82,27 @@ docker build -t contract-intel .
 ```bash
 docker run -p 8000:8000 --env-file .env contract-intel
 ```
+### 📂 Project Structure
+```bash
+app/
+│── api/
+│   ├── ingest.py
+│   ├── ask.py
+│   ├── extract.py
+│   ├── audit.py
+│   └── admin.py
+│
+│── services/
+│   ├── rag_engine.py
+│   ├── text_splitter.py
+│   ├── llm_extractor.py
+│
+│── db/
+│   ├── connection.py
+│   ├── models.py
+│   └── crud.py
+│
+│── main.py
+│── config.py
+```
 
