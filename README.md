@@ -44,6 +44,7 @@ This system supports:
 ```bash
 [git clone https://github.com/sachinbareth/Conntract_RAG.git]
 cd contract-intelligence
+```
 
 ## 📦 Setup Instructions
 
@@ -52,6 +53,7 @@ cd contract-intelligence
 python -m venv .venv
 source .venv/bin/activate    # Mac/Linux
 .venv\Scripts\activate       # Windows
+
 
 2️⃣ Install Dependencies
 pip install -r requirements.txt
@@ -62,7 +64,9 @@ CREATE DATABASE contractdb;
 4️⃣ Create .env
 POSTGRES_URL=postgresql://postgres:<password>@localhost:5432/contractdb
 GROQ_API_KEY=xxxxxxxxxxxxxxxxxxxx
+```
 
 ▶️ Run Server
 uvicorn app.main:app --reload
+
 
