@@ -64,9 +64,112 @@ CREATE DATABASE contractdb;
 4️⃣ Create .env
 POSTGRES_URL=postgresql://postgres:<password>@localhost:5432/contractdb
 GROQ_API_KEY=xxxxxxxxxxxxxxxxxxxx
-```
+
 
 ▶️ Run Server
 uvicorn app.main:app --reload
+
+```
+
+## 🐳 Docker Setup
+
+### 🔹 Build Image
+```bash
+docker build -t contract-intel .
+
+📥 1. /ingest – Upload & Index Contract
+Stores:
+
+Full text → PostgreSQL
+
+Chunks with metadata → FAISS
+
+CURL:
+curl -X POST "http://localhost:8000/ingest/" \
+  -F "file=@sample.pdf"
+
+❓ 2. /ask – RAG Question Answering
+Returns:
+
+Answer
+
+Citations (document_id, page, char-range)
+
+CURL:
+curl -X POST "http://localhost:8000/ask/" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the governing law?"}'
+
+⚡ 3. /ask/stream – Streaming Answer (SSE)
+curl "http://localhost:8000/ask/stream?question=What+is+the+term"
+
+📑 4. /extract – Structured Field Extraction
+Extracts:
+
+parties
+
+effective_date
+
+term
+
+governing_law
+
+termination
+
+payment_terms
+
+liability_cap
+
+indemnity
+
+confidentiality
+
+auto_renewal
+
+signatories
+
+CURL:
+curl -X POST "http://localhost:8000/extract/" -d "document_id=1"
+
+⚠️ 5. /audit – Contract Risk Analysis
+Returns:
+
+clause
+
+severity
+
+evidence
+
+char indexes
+
+page
+
+remediation
+
+confidence
+
+CURL:
+curl -X POST "http://localhost:8000/audit/" \
+  -H "Content-Type: application/json" \
+  -d '{"document_id": 1}'
+
+📊 6. /admin/metrics – API Usage
+Shows:
+
+ingest_count
+
+extract_count
+
+ask_count
+
+audit_count
+
+uptime
+
+CURL:
+curl http://localhost:8000/admin/metrics
+
+❤️ 7. /admin/healthz – Health Check
+curl http://localhost:8000/admin/healthz
 
 
