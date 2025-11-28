@@ -77,6 +77,10 @@ uvicorn app.main:app --reload
 ```bash
 docker build -t contract-intel .
 
+🔹 Run Container
+docker run -p 8000:8000 --env-file .env contract-intel
+```
+
 📥 1. /ingest – Upload & Index Contract
 Stores:
 
@@ -171,5 +175,6 @@ curl http://localhost:8000/admin/metrics
 
 ❤️ 7. /admin/healthz – Health Check
 curl http://localhost:8000/admin/healthz
+
 
 
